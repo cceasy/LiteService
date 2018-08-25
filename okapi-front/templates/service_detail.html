@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>服务详细信息</title>
+</head>
+<style>
+	.sub_title
+	{
+	   color:#ccc;
+	}
+</style>
+<body>
+	<h1>{{ api.title }}</h1>
+	<ul>
+		<li>
+			<div>
+				<a class="sub_title">基本信息</a>
+				<p><strong>ID1：</strong>{{ api.id }}</p>
+				<p><strong>ID2：</strong>{{ api.id2 }}</p>
+				<p><strong>服务名：</strong>{{ api.name }}</p>
+				<p><strong>版本号：</strong>{{ api.version }}</p>
+                <p><strong>类别：</strong>{{ api.category }}</p>
+				<p><strong>作者：</strong>{{ api.author }}</p>
+				<p><strong>加载模块：</strong>{{ api.module_name }}</p>
+				<p><strong>运行环境：</strong>{{ api.runtime }}</p>
+				<p><strong>上传时间：</strong>{{ api.time }}</p>
+				<p><strong>更新时间：</strong>{{ api.update_time }}</p>
+				<p><strong>更新说明：</strong>{{ api.update_message }}</p>
+				<p><strong>描述：</strong>{{ api.description }}</p>
+			</div>
+		</li>
+		<li>
+			<div>
+				<a class="sub_title">运行状态</a>
+				<p><strong>状态：</strong>{{ api.deploy.status }}</p>
+				<p><strong>消息：</strong>{{ api.deploy.message }}</p>
+				<p><strong>调试：</strong>{{ api.deploy.debug }}</p>
+			</div>
+		</li>
+		<li>
+			<div>
+				<a class="sub_title">调用接口</a>
+				{% for _api in api.api %}
+				<p><strong>函数：</strong>{{ _api.function }}</p>
+				<p><strong>路由：</strong>{{ _api.rule }}</p>
+				<p><strong>方法：</strong>{{ _api.methods }}</p>
+				<br/>
+				{% endfor %}
+			</div>
+		</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,57 @@
+version: '2'
+services:
+  nginx:
+    build: nginx/
+    links:
+      - okapidemo:okapi-demo
+      - okapifront:okapi-front
+    ports:
+      - "8088:8088"
+      - "80:80"
+    volumes_from:
+      - okapidemo
+      - okapifront
+    volumes:
+      - ~/log/nginx:/var/log/nginx
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/data/mongo:/data/db
+
+  okapiserver:
+    image: ls/okapi-py3
+    links:
+      - mongo:mongo
+    ports:
+      - "23241:23241"
+    environment:
+      - CONTAINER=docker_okapiserver_1
+    command: python3 -u -m pyokapi.server okapi/services/1
+
+  okapistorage:
+    image: ls/okapi-py3
+    links:
+      - mongo
+      - okapiserver:okapi
+    volumes:
+      - ~/data/storage:/data/storage
+    ports:
+      - "23242:23241"
+    environment:
+      - CONTAINER=docker_okapistorage_1
+    command: python -u -m pyokapi.server okapi/storage/1
+
+  okapidemo:
+    build: okapi-demo/
+    links:
+      - okapiserver:okapi
+
+  okapifront:
+    build: okapi-front/
+    links:
+      - okapiserver:okapi
+    volumes:
+      - ~/data/upload:/data/upload

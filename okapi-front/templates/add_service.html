@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>添加服务</title>
+</head>
+<body>
+	<p>添加服务</p>
+	<form method="POST" action="/services/upload" enctype="multipart/form-data">
+		取个名字: <input name="title" type="text"><br/>
+		服务标识: <input name="name" type="text"> 仅包含字母数字和下划线<br/>
+		服务描述: <input name="description" type="text"><br/>
+		调用模块: <input name="module_name" type="text"><br/>
+		版本号号: <input name="version" type="text"><br/>
+		运行环境: <select name="runtime">
+			<option value="python3">Python3</option>
+			<option value="python2">Python2</option>
+			<option value="java">Java</option>
+		</select><br/>
+		服务类别: <select name="category">
+			<option value="default">默认</option>
+			<option value="life">生活</option>
+			<option value="tech">科技</option>
+		</select><br/>
+        选择文件: <input type="file" name="file"><br/>
+      	<input type="submit" value="提交">
+	</form>
+</body>
+</html>

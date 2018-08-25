@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>服务列表</title>
+</head>
+<body>
+	<h1>API列表</h1>
+	<ul>
+		{% for api in apis %}
+		<li>
+			<div>
+				<a href='/services/{{ api.id2 }}'>{{ api.title }}</a>
+				<p><strong>作者：</strong>{{ api.author }}</p>
+				<p><strong>描述：</strong>{{ api.description }}</p>
+                <p><strong>类别：</strong>{{ api.category }}</p>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

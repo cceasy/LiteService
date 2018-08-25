@@ -1,0 +1,9 @@
+thriftpy
+easydict
+tornado==4.1
+requests
+werkzeug
+pymongo==2.8
+toro
+PyMySQL
+SQLAlchemy
