@@ -1,5 +1,7 @@
 #LiteService
 
+## update from okapi with lspvic, make it stable and remove front site
+
 ## Rest services platform, easy to call each other and make endpoints
 
 ## before deploy:
